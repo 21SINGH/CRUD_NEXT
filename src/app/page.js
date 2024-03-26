@@ -1,10 +1,11 @@
-import styles from "./page.module.css"
+"use client";
 
-export default function Home(){
+import Login from "@/components/login";
 
+export default function Home() {
   return(
     <div>
-      home
+      <Login />
     </div>
   )
 }

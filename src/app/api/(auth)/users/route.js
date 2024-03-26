@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import connect from "../../../../../lib/db";
 import User from "../../../../../lib/modals/user";
 import { Types } from "mongoose";
+const bcrypt = require("bcrypt");
+var jwt = require("jsonwebtoken");
 
 const ObjectId = require("mongoose").Types.ObjectId;
 
@@ -21,13 +23,38 @@ export const GET = async () => {
 export const POST = async (request) => {
   try {
     const body = await request.json();
+    const { email, userName, password} = body;
+
+    console.log(body);
+
+    // Check if the email already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return new NextResponse("Email already exists", { status: 400 });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10); 
 
     await connect();
-    const newUser = new User(body);
+   
+    const newUser = new User({
+      email,
+      userName,
+      password: hashedPassword,
+    });
     await newUser.save();
 
+  
+    const data = {
+      user : {
+        id: newUser.id
+      }
+    }
+    console.log(data);
+    const authToken = jwt.sign(data , process.env.JWT_SECRET);
+    
     return new NextResponse(
-      JSON.stringify({ message: "User created", user: newUser }),
+      JSON.stringify({ message: "User created", authToken: authToken}),
       {
         status: 201,
       }
