@@ -4,11 +4,11 @@ import { headers } from "next/headers";
 
 const fetchuser = (req, res, next) => {
   // get the user from the jwt token and id to request object
-  console.log("1");
+  // console.log("1");
   const headersList = headers();
-  console.log("2");
+  // console.log("2");
   const token = headersList.get("auth-token");
-  console.log("3");
+  // console.log("3");
   console.log(token);
   try {
     if (!token) {

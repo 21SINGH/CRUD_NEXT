@@ -6,6 +6,7 @@ import User from "../../../../../lib/modals/user";
 import fetchUser from "../../../../middleware/fetchUser";
 
 export const GET = async (request) => {
+
   try {
     await connect();
 
@@ -22,12 +23,35 @@ export const GET = async (request) => {
 };
 
 
+// export const GET = async (request) => {
+//   try {
+//     await connect();
+//     await fetchUser(request);
+//     const userId = request.user.id;
+//     console.log(userId);
+
+//     // Fetch PDFs associated with the user ID
+//     const pdfs = await Pdf.find({ user: userId });
+
+//     // Convert PDF data to base64-encoded strings
+//     const pdfsWithBase64Data = pdfs.map(pdf => ({
+//       title: pdf.title,
+//       pdfUrl: `data:${pdf.pdf.contentType};base64,${pdf.pdf.data.toString('base64')}`
+//     }));
+
+//     return new NextResponse(JSON.stringify(pdfsWithBase64Data), { status: 200 });
+//   } catch (error) {
+//     return new NextResponse("Error in fetching notes" + error, { status: 500 });
+//   }
+// };
+
+
 export async function POST(request) {
   try {
     // Your existing code to fetch user ID, connect, parse form data, etc.
-    // await fetchUser(request);
-    // const userId = request.user.id;
-    const userId = "6602df00864cb1d8f297eaea";
+    await fetchUser(request);
+    const userId = request.user.id;
+    // const userId = "6602df00864cb1d8f297eaea";
     console.log(userId);
     await connect();
 
@@ -58,7 +82,7 @@ export async function POST(request) {
     const newPdf = await createPdfAndUpdateUser(userId, title, pdfData);
 
     return new NextResponse(
-      JSON.stringify({ message: "PDF uploaded successfully" }),
+      JSON.stringify({ message: "PDF uploaded successfully", newPdf: newPdf}),
       { status: 200 }
     );
   } catch (error) {
