@@ -7,26 +7,32 @@ import PdfUpload from "@/components/pdfUpload";
 import Navbar from "./components/Navbar";
 
 export default function UserPdf() {
-  const [showLogin, setShowLogin] = useState(true);
-  const [showSignup, setShowSignup] = useState(false);
+  const [showPdfUpload, setShowPdfUpload] = useState(true);
+  const [showGetPdf, setShowGetPdf] = useState(false);
+
 
   const handleLoginClick = () => {
-    setShowLogin(true);
-    setShowSignup(false);
+    setShowPdfUpload(true);
+    setShowGetPdf(false);
   };
 
   const handleSignupClick = () => {
-    setShowSignup(true);
-    setShowLogin(false);
+    setShowGetPdf(true);
+    setShowPdfUpload(false);
   };
+  const handlePdfUploaded = () => {
+    setShowPdfUpload(false);
+    setShowGetPdf(true);
+  };
+
   return (
     <div>
       <Navbar
         onLoginClick={handleLoginClick}
         onSignupClick={handleSignupClick}
       />
-      {showLogin && <PdfUpload />}
-      {showSignup && <GetPdf />}
+      {showPdfUpload && <PdfUpload onPdfUploaded={handlePdfUploaded} />}
+      {showGetPdf && <GetPdf />}
       <AuroraHero />
     </div>
   );

@@ -3,15 +3,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import PDFViewer from "../showPdf";
+import Spinner from "../Spinner"; // Import your spinner component
 
 const PdfSplitter = ({ selectedPdf }) => {
   const [pageNumbers, setPageNumbers] = useState(""); // State to store user input for page numbers or ranges
   const [splitting, setSplitting] = useState(false);
   const [newPdfData, setNewPdfData] = useState(null);
   const [splitPdfName, setSplitPdfName] = useState("");
+  const [loading, setLoading] = useState(false); // State to track loading
 
   const handleSplitPdf = async () => {
     setSplitting(true);
+    setLoading(true); // Set loading to true when starting split process
     try {
       const response = await axios.post("/api/splitPdf", {
         pdfData: selectedPdf,
@@ -25,9 +28,11 @@ const PdfSplitter = ({ selectedPdf }) => {
       setSplitPdfName(defaultName);
 
       setSplitting(false);
+      setLoading(false); // Set loading to false after split completes
     } catch (error) {
       console.error("Error splitting PDF:", error);
       setSplitting(false);
+      setLoading(false); // Set loading to false in case of error
     }
   };
 
@@ -64,14 +69,15 @@ const PdfSplitter = ({ selectedPdf }) => {
           onClick={handleSplitPdf}
           disabled={splitting}
         >
-          {splitting ? "Splitting..." : "Split PDF"}
+          {splitting ? <Spinner /> : "Split PDF"} {/* Conditionally render the spinner */}
         </button>
+
 
         {newPdfData && (
           <div className={styles.newData}>
-            <div className={styles.top}> 
-            <div><h7 className={styles.heading2 }>Newly created PDF</h7></div>
-            <div ><button className={styles.btn} onClick={handleDownloadPdf}>Download</button></div>
+            <div className={styles.top}>
+              <div><h7 className={styles.heading2 }>Newly created PDF</h7></div>
+              <div ><button className={styles.btn} onClick={handleDownloadPdf}>Download</button></div>
             </div>
             <div className={styles.viewer}><PDFViewer  pdfData={newPdfData} /></div>
           </div>

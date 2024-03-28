@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import styles from "./page.module.scss"
 import SignUP from "@/components/signup";
 import { useState } from "react";
-
+import Bottom from "@/components/Bottom";
 
 export default function Home() {
   const [showLogin, setShowLogin] = useState(true);
@@ -29,6 +29,7 @@ export default function Home() {
       <Navbar onLoginClick={handleLoginClick} onSignupClick={handleSignupClick} />
       {showLogin && <Login />}
       {showSignup && <SignUP />}
+      <Bottom />
     </div>
   )
 }

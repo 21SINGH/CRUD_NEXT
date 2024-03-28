@@ -1,40 +1,43 @@
-"use client";
+"use client"
 
 import styles from "./style.module.scss";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Spinner from "../Spinner"; // Import your spinner component
 
 export default function SignUP() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // State to track loading
   const router = useRouter(); // Initialize useRouter
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when starting sign up process
     try {
       const response = await axios.post("/api/users", {
         email,
         userName,
         password,
       });
-      // Handle successful login
+      // Handle successful sign up
       localStorage.setItem("token", response.data.authToken);
       router.push("/userpdf");
     } catch (error) {
       setError("Invalid email or password");
     }
+    setLoading(false); // Set loading to false after API call completes
   };
 
   return (
     <div className={styles.main}>
+      {loading && <Spinner />} {/* Conditionally render the spinner */}
       <div className={styles.div}>
-        <h2 className={styles.title}>
-          <h2>/ sign in</h2>
-        </h2>
-        <form className={styles.form} onSubmit={handleLogin}>
+        <h2 className={styles.title}>/ sign up</h2>
+        <form className={styles.form} onSubmit={handleSignUp}>
           <div className={styles.el}>
             <label className={styles.label}>Email:</label>
             <input
@@ -62,7 +65,7 @@ export default function SignUP() {
               required
             />
           </div>
-          <button type="submit">SignIn</button>
+          <button type="submit" disabled={loading}>SignUp</button>
         </form>
         {error && <p>{error}</p>}
       </div>
