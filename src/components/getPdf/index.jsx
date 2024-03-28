@@ -18,6 +18,7 @@ export default function GetPdf() {
             "auth-token": `${localStorage.getItem("token")}`,
           },
         });
+        console.log(localStorage.getItem("token"));
 
         setPdfs(response.data.userPDFs);
       } catch (error) {

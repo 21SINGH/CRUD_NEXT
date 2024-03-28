@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 export default function Navbar({ onLoginClick, onSignupClick }) {
   const handleLogout = () => {
     // Clear localStorage token
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
     // Redirect to home page
     window.history.pushState(null, "", "/");
     // Force reload to reflect the updated URL
