@@ -27,7 +27,7 @@ export default function PdfUpload({ onPdfUploaded }) {
 
     try {
       const result = await axios.post(
-        "http://localhost:3000/api/pdfUpload",
+        "/api/pdfUpload",
         formData,
         {
           headers: {
