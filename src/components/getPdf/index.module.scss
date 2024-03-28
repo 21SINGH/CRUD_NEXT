@@ -1,0 +1,32 @@
+.main {
+    height: 150vh;
+    width: 100vw;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    position: absolute;
+    z-index: 10;
+    // border: 1px solid red;
+    margin-top: 6%;
+
+    .pdfContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; // Adjust the gap between cards as needed
+        justify-content: center;
+        height: 10vh;
+        align-items: flex-start;
+    }
+
+    .pdfCard {
+        // border: 1px solid red;
+        width: 300px; // Adjust card width as needed
+        padding: 20px;
+        margin: 10px;
+        .top{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    }
+}

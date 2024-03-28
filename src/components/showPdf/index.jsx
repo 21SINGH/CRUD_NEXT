@@ -1,5 +1,6 @@
 'use client'
 
+import styles from "./style.module.scss"
 import React, { useEffect, useState } from 'react';
 
 const PDFViewer = ({ pdfData }) => {
@@ -15,8 +16,8 @@ const PDFViewer = ({ pdfData }) => {
   }, [pdfData]);
 
   return (
-    <div>
-      <iframe src={pdfUrl} width="100%" height="500px"></iframe>
+    <div className={styles.pdfViewerContainer}>
+      <iframe src={pdfUrl} className={styles.pdfViewer} width="100%" height="500px"></iframe>
     </div>
   );
 };

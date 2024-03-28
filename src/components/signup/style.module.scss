@@ -4,14 +4,14 @@
     align-items: center;
     flex-direction: column;
     z-index: 10;
-    // border: 1px solid red;
+  //   border: 1px solid red;
     position: fixed;
     top: 10%;
     left: 2%;
     right: 2%;
     bottom: 8%;
     .div {
-    //   border: 1px solid red;
+      // border: 1px solid red;
       position: absolute;
       top: 0;
       left: 0;
@@ -24,19 +24,23 @@
       form {
         display: flex;
         flex-direction: column;
-        margin-top: 5%;
-        // border: 1px solid red;
+        margin-top: 10%;
+        margin-left: 5%;
+        // align-items: center;
   
         .el {
           display: flex;
           align-items: center;
           margin-bottom: 10px; // Adjust spacing between form elements
-          margin-left: 5%;
           .label {
             font-size: 2.5em;
           }
           input {
+            /* Remove default input styles */
+            //   border: none;
+            //   outline: none;
             background-color: transparent;
+          //   margin-top: 20px; /* Adjust as needed */
             color: greenyellow;
             border: 1px solid white;
             font-weight: 450;
@@ -46,11 +50,7 @@
             margin-top: -0.1%;
             position: absolute;
             left: 25%;
-              padding-left: 5.4em;
-          }
-          .but{
-            background-color: transparent;
-            display: inline-block;
+            //   padding-left: 5.4em;
           }
         }
   
@@ -58,12 +58,12 @@
           margin-top: 30px; // Adjust spacing between inputs and button
           width: 100px;
           height: 40px;
-          margin-left: 64%;
+          margin-left: 56%;
           background-color: transparent;
           color: white;
           border: none;
-          border: 1px solid white;
           font-size: 1.2em;
+          border: 1px solid white;
         }
       }
     }
