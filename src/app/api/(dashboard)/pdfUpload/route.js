@@ -22,11 +22,11 @@ export const POST = async (req, res) => {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = file.name.replaceAll(" ", "_");
-    console.log(filename);
+    // const filename = file.name.replaceAll(" ", "_");
+    // console.log(filename);
 
-    // Save PDF file to the local directory
-    await writeFile(path.join(process.cwd(), "pdfs/" + filename), buffer);
+    // // Save PDF file to the local directory
+    // await writeFile(path.join(process.cwd(), "pdfs/" + filename), buffer);
 
     // Save PDF data to the database
     const pdfData = {
