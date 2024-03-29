@@ -22,14 +22,14 @@ export default function Home() {
     setShowLogin(false);
   };
   return(
+    <div className="container">
     <div className={styles.main}>
-      {/* <Navbar /> */}
-      {/* <Login /> */}
       <AuroraHero />
       <Navbar onLoginClick={handleLoginClick} onSignupClick={handleSignupClick} />
       {showLogin && <Login />}
       {showSignup && <SignUP />}
-      <Bottom />
+      {/* <Bottom /> */}
+    </div>
     </div>
   )
 }

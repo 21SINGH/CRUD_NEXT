@@ -27,6 +27,8 @@ export const POST = async (request) => {
 
     console.log(body);
 
+    await connect();
+
     // Check if the email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -35,7 +37,6 @@ export const POST = async (request) => {
 
     const hashedPassword = await bcrypt.hash(password, 10); 
 
-    await connect();
    
     const newUser = new User({
       email,
