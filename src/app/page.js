@@ -28,7 +28,7 @@ export default function Home() {
       <Navbar onLoginClick={handleLoginClick} onSignupClick={handleSignupClick} />
       {showLogin && <Login />}
       {showSignup && <SignUP />}
-      {/* <Bottom /> */}
+      <Bottom />
     </div>
     </div>
   )
