@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     z-index: 10;
-  //   border: 1px solid red;
+    // border: 1px solid red;
     position: fixed;
     top: 10%;
     left: 2%;
@@ -12,21 +12,21 @@
     bottom: 8%;
     .div {
       // border: 1px solid red;
+      margin-left: 5%;
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
-      width: 100%;
+      width: 90%;
       .title {
         margin-top: 5%;
-        font-size: 2em;
+        font-size: 3rem;
+        color: var(--text-secondary);
       }
       form {
         display: flex;
         flex-direction: column;
         margin-top: 10%;
-        margin-left: 5%;
-        // align-items: center;
   
         .el {
           display: flex;
@@ -34,18 +34,20 @@
           margin-bottom: 10px; // Adjust spacing between form elements
           .label {
             font-size: 2.5em;
+            color: var(--secondary-background);
           }
           input {
             /* Remove default input styles */
-            //   border: none;
+            border: none;
             //   outline: none;
             background-color: transparent;
-          //   margin-top: 20px; /* Adjust as needed */
+            //   margin-top: 20px; /* Adjust as needed */
             color: greenyellow;
-            border: 1px solid white;
+            border: 1px solid var(--border-color);
             font-weight: 450;
             font-size: 1em;
             width: 40%;
+            // min-width: 200px;
             height: 30px;
             margin-top: -0.1%;
             position: absolute;
@@ -58,14 +60,75 @@
           margin-top: 30px; // Adjust spacing between inputs and button
           width: 100px;
           height: 40px;
-          margin-left: 56%;
+          margin-left: 57%;
           background-color: transparent;
-          color: white;
+          color: var(--text-secondary);
           border: none;
+          border: 1px solid var(--border-color);
           font-size: 1.2em;
-          border: 1px solid white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        button:hover {
+          box-shadow: 0 0 21px 0 #4479e27c;
+          border: 1px solid #4479e27c;
+          cursor: pointer;
         }
       }
     }
   }
   
+  @media (max-width: 1046px) {
+      .main {
+        .div {
+          form {
+            .el {
+              input {
+                left: 35%;
+              }
+            }
+            button {
+              margin-left: 64%;
+            }
+          }
+        }
+      }
+    }
+  
+  @media (max-width: 800px) {
+      .main {
+        .div {
+          form {
+            .el {
+              flex-direction: column;
+              align-items: flex-start;
+              input {
+                position: relative;
+                left: 0%;
+              }
+            }
+            button {
+              margin-left: 0%;
+            }
+          }
+        }
+      }
+    }
+  
+  
+  @media (max-width: 450px) {
+
+      .main {
+        .div {
+          form {
+            .el {
+              input {
+                width: 70%;
+              }
+            }
+          }
+        }
+      }
+    
+  }

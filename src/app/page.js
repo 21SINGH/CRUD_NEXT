@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
 import AuroraHero from "@/components/AuroHero";
 import Login from "@/components/login";
 import Navbar from "@/components/Navbar";
-import styles from "./page.module.scss"
+import styles from "./page.module.scss";
 import SignUP from "@/components/signup";
 import { useState } from "react";
 import Bottom from "@/components/Bottom";
@@ -21,15 +21,16 @@ export default function Home() {
     setShowSignup(true);
     setShowLogin(false);
   };
-  return(
-    <div className="container">
+  return (
     <div className={styles.main}>
       <AuroraHero />
-      <Navbar onLoginClick={handleLoginClick} onSignupClick={handleSignupClick} />
+      <Navbar
+        onLoginClick={handleLoginClick}
+        onSignupClick={handleSignupClick}
+      />
       {showLogin && <Login />}
       {showSignup && <SignUP />}
       <Bottom />
     </div>
-    </div>
-  )
+  );
 }

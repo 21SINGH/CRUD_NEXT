@@ -26,16 +26,12 @@ export default function PdfUpload({ onPdfUploaded }) {
     formData.append("file", file);
 
     try {
-      const result = await axios.post(
-        "/api/pdfUpload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "auth-token": `${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const result = await axios.post("/api/pdfUpload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "auth-token": `${localStorage.getItem("token")}`,
+        },
+      });
       console.log(result);
       setUploadStatus("Upload successful");
       onPdfUploaded(); // Notify UserPdf component that PDF is uploaded
@@ -48,39 +44,43 @@ export default function PdfUpload({ onPdfUploaded }) {
   };
 
   return (
-    <div className={styles.main}>
-      {loading && <Spinner />} {/* Conditionally render the spinner */}
-      <div className={styles.div}>
-        <div className={styles.title}>
-          <h2>/ Upload pdf</h2>
-        </div>
-        <form className={styles.form} onSubmit={submitImage}>
-          <div className={styles.el}>
-            <label className={styles.label}>Title:</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Title"
-              required
-              onChange={(e) => setTitle(e.target.value)}
-            />
+    <div>
+      <div className={styles.main}>
+        {loading && <Spinner />} {/* Conditionally render the spinner */}
+        <div className={styles.div}>
+          <div className={styles.title}>
+            <h2>/ Upload pdf</h2>
           </div>
-          <br />
-          <div className={styles.el}>
-            <label className={styles.label}>PDF file:</label>
-            <input
-              type="file"
-              accept="application/pdf"
-              className={styles.but}
-              required
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-          </div>
-          <br />
-          <button type="submit" disabled={loading}>Submit</button>
-        </form>
+          <form className={styles.form} onSubmit={submitImage}>
+            <div className={styles.el}>
+              <label className={styles.label}>Title:</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Title"
+                required
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <br />
+            <div className={styles.el}>
+              <label className={styles.label}>PDF file:</label>
+              <input
+                type="file"
+                accept="application/pdf"
+                className={styles.but}
+                required
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </div>
+            <br />
+            <button type="submit" disabled={loading}>
+              Submit
+            </button>
+          </form>
 
-        {uploadStatus && <p>{uploadStatus}</p>}
+          {uploadStatus && <p>{uploadStatus}</p>}
+        </div>
       </div>
       <Bottom />
     </div>

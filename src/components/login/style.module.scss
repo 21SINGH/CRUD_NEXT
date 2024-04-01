@@ -1,7 +1,7 @@
 .container2 {
   // border: 1px solid red;
   height: 75%;
-  width: 99.9%;
+  width: 90%;
   z-index: 10;
   position: absolute;
   left: 0;
@@ -11,6 +11,7 @@
   .main {
     height: 90%;
     width: 91%;
+    margin-left: 5%;
     max-width: 1560px;
     display: flex;
     justify-content: center;
@@ -21,13 +22,13 @@
       // border: 1px solid red;
       position: absolute;
       top: 0;
-      // left: 0;
       height: 100%;
       width: 100%;
       .title {
         margin-top: 5%;
         margin-left: 5%;
-        font-size: 2em;
+        font-size: 2rem;
+        color: var(--text-secondary);
       }
       form {
         display: flex;
@@ -42,6 +43,7 @@
           margin-bottom: 10px; // Adjust spacing between form elements
           .label {
             font-size: 2.5em;
+            color: var(--secondary-background);
           }
           input {
             /* Remove default input styles */
@@ -50,10 +52,11 @@
             background-color: transparent;
             //   margin-top: 20px; /* Adjust as needed */
             color: greenyellow;
-            border: 1px solid white;
+            border: 1px solid var(--border-color);
             font-weight: 450;
             font-size: 1em;
             width: 40%;
+            // min-width: 200px;
             height: 30px;
             margin-top: -0.1%;
             position: absolute;
@@ -68,10 +71,18 @@
           height: 40px;
           margin-left: 56%;
           background-color: transparent;
-          color: white;
+          color: var(--text-secondary);
           border: none;
-          border: 1px solid white;
+          border: 1px solid var(--border-color);
           font-size: 1.2em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        button:hover {
+          box-shadow: 0 0 21px 0 #4479e27c;
+          border: 1px solid #4479e27c;
+          cursor: pointer;
         }
       }
     }
@@ -79,96 +90,58 @@
 }
 
 @media (max-width: 1046px) {
-  .container2{
-    .main{
-      .div{
-        form{
-          .el{
-            input{
+  .container2 {
+    .main {
+      .div {
+        form {
+          .el {
+            input {
               left: 35%;
             }
           }
-          button{
+          button {
             margin-left: 64%;
           }
-         }
+        }
       }
     }
   }
 }
 
 @media (max-width: 800px) {
-  .container2{
-    .main{
-      .div{
-        form{
-          .el{
+  .container2 {
+    .main {
+      .div {
+        form {
+          .el {
             flex-direction: column;
-            align-items:flex-start;
-            input{
+            align-items: flex-start;
+            input {
               position: relative;
               left: 0%;
             }
           }
-         }
+          button {
+            margin-left: 0%;
+          }
+        }
       }
     }
   }
 }
 
-@media (max-width: 860px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (max-width: 765px) {
-  .container {
-    width: 700px;
-  }
-}
-@media (max-width: 695px) {
-  .container {
-    width: 650px;
-  }
-}
-@media (max-width: 657px) {
-  .container {
-    width: 550px;
-  }
-}
-@media (max-width: 611px) {
-  .container {
-    width: 500px;
-  }
-}
-
-@media (max-width: 575px) {
-  .container {
-    width: 470px;
-  }
-}
-@media (max-width: 537px) {
-  .container {
-    width: 450px;
-  }
-}
-@media (max-width: 500px) {
-  .container {
-    width: 400px;
-  }
-}
-@media (max-width: 454px) {
-  .container {
-    width: 380px;
-  }
-}
-@media (max-width: 410px) {
-  .container {
-    width: 340px;
-  }
-}
-@media (max-width: 350px) {
-  .container {
-    width: 300px;
+@media (max-width: 450px) {
+  .container2 {
+    .main {
+      .div {
+        form {
+          .el {
+            input {
+              width: 70%;
+            }
+          }
+        }
+      }
+    }
   }
 }

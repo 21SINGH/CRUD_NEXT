@@ -43,7 +43,7 @@ export default function GetPdf() {
               <div className={styles.top}>
                 <h3>{pdf.title}</h3>
                 <Link href={`/pdfViewer?pdfId=${pdf._id}`}>
-                  split pdf
+                  <div className={styles.link}>split pdf</div>
                 </Link>
               </div>
               <PDFViewer pdfData={pdf.pdf.data} />

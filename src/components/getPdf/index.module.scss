@@ -1,12 +1,10 @@
 .main {
     height: 150vh;
-    width: 100vw;
+    width: 90%;
     display: flex;
-    // justify-content: center;
-    // align-items: center;
     position: absolute;
     z-index: 10;
-    // border: 1px solid red;
+
     margin-top: 6%;
 
     .pdfContainer {
@@ -27,6 +25,18 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            a{
+                text-decoration: none;
+            }
+            .link{
+                color: var(  --link-color);
+            }
+            .link:hover {
+                box-shadow: 0 0 21px 0 #4479e27c;
+                border-radius: 5px;
+                border: 1px solid #4479e27c;
+                cursor: pointer;
+              }
         }
     }
 }
